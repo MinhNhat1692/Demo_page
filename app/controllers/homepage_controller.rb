@@ -5,6 +5,9 @@ class HomepageController < ApplicationController
   def services
   end
 
+  def reg
+  end
+
   def department_1
   end
 

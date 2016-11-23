@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'homepage/services'
 
+  get 'homepage/reg', to: 'homepage#reg'
+
   get 'homepage/department_1'
 
   get 'homepage/department_2'

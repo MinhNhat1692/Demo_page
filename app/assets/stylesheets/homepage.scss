@@ -2368,3 +2368,164 @@ p{
     text-align: justify;
     margin-top: 0;
 }
+
+.services-head{
+    background: asset-data-url("sub-bnr-bg.jpg") no-repeat center center;
+    background-size: 100%;
+}
+
+.cover{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.85);
+}
+
+.services-head h1 small{
+    text-align: center;
+}
+
+.tab-head-block{
+    background: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+.tab-head-block .tab-head{
+    padding: 12px 20px 12px;
+    background: #f8f8f8;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    text-align: justify;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.tab-head-block .tab-head:not(:first-child){
+    margin-top: 2px;
+}
+
+.tab-head-block .tab-head:hover:not(.active){
+    background: #e1e1e1;
+}
+
+.tab-head-block .active{
+    background: #3dc5df;
+    color: #fff;
+}
+
+.tab-content h4{
+    margin-top: 0px;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.btn-tab-content{
+    background: #3dc5df;
+    color: #fff;
+    border: 2px solid #3dc5df;
+    border-radius: 0px;
+    display: inline-block;
+    padding: 12px 30px;
+    min-width: 200px;
+    margin-top: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-tab-content:hover{
+    color: #3dc5df;
+    background: #fff;
+}
+
+.tab-content .pricing{
+    position: absolute;
+    right: -50px;
+    top: -20px;
+    background: #3dc5df;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 12px 15px 12px 15px;
+}
+
+.clear-page.blurred-dashboard {
+    background: asset-data-url("blurred-dashboard.jpg") no-repeat center center fixed #1F3B5D;
+    background-size: cover;
+}
+
+.clear-page {
+    padding-top: 50px;
+    min-height: 100vh;
+    background-color: #182848;
+    background-image: -webkit-linear-gradient(-360deg, #2a5e82 10%, #182848 90%);
+    background-image: linear-gradient(90deg, #2a5e82 10%, #182848 90%);
+}
+
+.dark {
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fill-white {
+    background-color: white !important;
+}
+
+.m-l-r-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.m400 {
+    max-width: 400px;
+}
+
+.m900 {
+    max-width: 900px;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.btn.btn-success, .fields-list .select2-container .btn-success.select2-choice {
+    border: none;
+    background-color: #32B28C;
+    color: white;
+    border-radius: 2px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+    line-height: normal;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.color-secondary {
+    color: #FA3870 !important;
+}
+
+.icon-fw, [class^="icon-"], [class*=" icon-"] {
+    width: 1.28571em;
+    text-align: center;
+}
