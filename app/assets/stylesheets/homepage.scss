@@ -236,27 +236,28 @@ body {
 }
 
 .hero {
+    position: relative;
     background-color: #182848;
-    border-bottom: solid 1px #1F3B5D;
-    background-image: -webkit-linear-gradient(-410deg, #2f6b91 10%, #182848 90%);
-    background-image: -webkit-linear-gradient(310deg, #2f6b91 10%, #182848 90%);
-    background-image: linear-gradient(140deg, #2f6b91 10%, #182848 90%);
+    background: asset-data-url("medical.jpg") no-repeat center center;
+    background-size: 100%;
 }
 
 .hero h1 {
     -webkit-font-smoothing: antialiased;
     text-align: center;
-    margin: 1.8em 0 .8em;
+    margin: 2.8em 0 .8em;
     font: 300 4em/100% Roboto;
-    color: white;
+    color: #007DAD;
 }
 
 .hero h1 small {
     display: block;
-    color: #c0c8d8;
-    font-size: .4em;
-    margin-top: .4em;
+    color: rgba(31, 31, 31, 0.99);
+    font-size: 0.3em;
+    text-transform: uppercase;
+    margin-top: 1.6em;
     letter-spacing: 0.05em;
+    text-align: justify;
 }
 
 h1 small, .h1 small {
@@ -398,14 +399,6 @@ ul, ol {
     margin-bottom: 10px;
 }
 
-.btn-static-primary {
-    background-color: #FA3870;
-    color: white;
-    box-shadow: none;
-    position: relative;
-    border: none;
-}
-
 .m-l {
     margin-left: 15px;
 }
@@ -497,28 +490,7 @@ small, .small {
     color: #46AEDA;
 }
 
-.btn-static-inverse:hover {
-    color: white;
-    background-color: rgba(70,174,218,0.4);
-}
 
-.btn-static-inverse {
-    background-color: rgba(70,174,218,0.2);
-    color: white;
-    border: none;
-    box-shadow: inset 0 0 0 1px rgba(70,174,218,0.9);
-}
-
-.btn-static-primary .no-card {
-    font-size: .9em;
-    color: #8191B1;
-    text-transform: none;
-    position: absolute;
-    top: 3.2em;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
 
 .btn {
     display: inline-block;
@@ -542,6 +514,19 @@ small, .small {
     user-select: none;
 }
 
+.btn-static-inverse:hover {
+    color: white;
+    background-color: rgba(70,174,218,0.4);
+}
+
+.btn-static-inverse {
+    background-color: rgba(70,174,218,0.2);
+    color: rgba(31, 31, 31, 0.99);
+    padding: 10px 15px 10px 15px;
+    border: none;
+    box-shadow: inset 0 0 0 1px rgba(70,174,218,0.9);
+}
+
 .spacer30 {
     width: 100%;
     font-size: 0;
@@ -550,6 +535,26 @@ small, .small {
     border: 0;
     display: block;
     height: 30px;
+}
+
+.btn-static-primary {
+    background-color: #FA3870;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    box-shadow: none;
+    position: relative;
+    border: none;
+}
+
+.btn-static-primary .no-card {
+    font-size: .9em;
+    color: #8191B1;
+    text-transform: none;
+    position: absolute;
+    top: 3.2em;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 .btn-static-primary:hover {
@@ -568,9 +573,8 @@ small, .small {
 }
 
 #integrate {
-    background-image: -webkit-linear-gradient(-240deg, #202a59 10%, #182848 70%);
-    background-image: -webkit-linear-gradient(120deg, #202a59 10%, #182848 70%);
-    background-image: linear-gradient(-30deg, #202a59 10%, #182848 70%);
+    background: asset-data-url("benefits.jpg") no-repeat center center;
+    background-size: 100%;
 }
 
 #integrate h2 {
@@ -2267,4 +2271,100 @@ p{
     width: 100%;
     border-radius: 4px;
     border: 8px solid white;
+}
+
+.schedule-block {
+    background: #f5f5f5;
+    box-shadow: 0 2px 6px 0 #888;
+    border-radius: 0px;
+    text-align: center;
+    padding-bottom: 25px;
+    margin: 0 auto 30px;
+    max-width: 370px;
+}
+
+.schedule-block .doctor-image img {
+    vertical-align: bottom;
+    max-width: 100%;
+}
+
+.schedule-block .doctor-name {
+    background: #2caee2;
+    height: 75px;
+    width: 680px;
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+}
+
+.schedule-block .doctor-name h4{
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.schedule-block .timetable {
+    color: #302d2a;
+    font-weight: 500;
+    padding: 0 12.2%;
+    text-align: left;
+    margin: 15px 0;
+}
+
+.schedule-block .timetable .item:not(:last-of-type) {
+    border-bottom: 1px solid #dddddd;
+}
+
+.schedule-block .timetable .item {
+    overflow: hidden;
+    padding: 9px 0;
+}
+
+.schedule-block .timetable .item .label {
+    float: left;
+    width: 50%;
+    color: #000;
+    text-align: justify;
+    font-size: 0.9em;
+}
+
+.schedule-block .timetable .item .value {
+    float: right;
+    text-align: justify;
+}
+
+.button-style2 {
+    display: inline-block;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: 1px solid #2caee2;
+    color: #302d2a;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.button-style2:hover {
+    background: #23abe1;
+    color: #fff;
+}
+
+.special-col{
+    margin-top: 20px;
+}
+
+.special-col img{
+    width: 70px;
+}
+
+.special-col h3{
+    text-align: justify;
+    margin-top: 0;
 }

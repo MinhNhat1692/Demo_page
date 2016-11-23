@@ -9,47 +9,62 @@
     %nav#main-navigation-collapsed.collapse.navbar-collapse
       %ul.nav.nav-pills.pull-left
         %li
-          %a{"data-no-turbolink" => "true", :href => "/features"} Sản phẩm
+          %a{"data-no-turbolink" => "true", :href => "/features"} Dịch vụ
         %li
-          %a{"data-no-turbolink" => "true", :href => "/pricing"} Biểu giá
-        %li.dropdown.hidden-xs
-          %a{"data-no-turbolink" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Trung tâm y tế
-            %i.fa.fa-caret-down
-          %ul.dropdown-menu
-            %li
-              %a{"data-no-turbolink" => "true", :href => "/enterprise"} Giới thiệu
-            %li
-              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Đặt lịch demo sản phẩm
+          %a{"data-no-turbolink" => "true", :href => "/pricing"} Đăng ký khám
         %li.dropdown.hidden-xs
           %a{"data-no-turbolink" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Thông tin
             %i.fa.fa-caret-down
           %ul.dropdown-menu
             %li
-              %a{"data-no-turbolink" => "true", :href => "/changelogs"} Cập nhật
+              %a{"data-no-turbolink" => "true", :href => "/enterprise"} Giới thiệu
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Tin tức
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Thiết bị
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Tra cứu thông tin bác sỹ
+        %li.dropdown.hidden-xs
+          %a{"data-no-turbolink" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Hỗ trợ
+            %i.fa.fa-caret-down
+          %ul.dropdown-menu
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/changelogs"} Đăng ký khám
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/changelogs"} Đường dây nóng
             %li
               %a{"data-no-turbolink" => "true", :href => "/documentation"}
                 %img{:src => asset_path("logo-community-sm.svg"), :width => "32"}/
-                Trung tâm hướng dẫn
+                Phản hồi dịch vụ
+        %li.dropdown.hidden-xs
+          %a{"data-no-turbolink" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Phòng ban
+            %i.fa.fa-caret-down
+          %ul.dropdown-menu
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise"} Khoa Răng Hàm Mặt
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Khoa Nhi
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Khoa Nội
+            %li
+              %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Khoa Ngoại
         %li.visible-xs
-          %a{"data-no-turbolink" => "true", :href => "/features"} Sản phẩm
+          %a{"data-no-turbolink" => "true", :href => "/features"} Dịch vụ
         %li.visible-xs
-          %a{"data-no-turbolink" => "true", :href => "/pricing"} Biểu giá
+          %a{"data-no-turbolink" => "true", :href => "/pricing"} Tin tức
         %li.visible-xs
           %a{"data-no-turbolink" => "true", :href => "/enterprise"} Giới thiệu
         %li.visible-xs
-          %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Đặt lịch demo sản phẩm
+          %a{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Tra cứu thông tin bác sỹ
         %li.visible-xs
-          %a{"data-no-turbolink" => "true", :href => "changelogs"} Cập nhật
+          %a{"data-no-turbolink" => "true", :href => "changelogs"} Hỗ trợ
         %li.visible-xs
           %a{"data-no-turbolink" => "true", :href => "documentation"}
             %img{:src => asset_path("logo-community-sm.svg"), :width => "32"}/
-            Trung tâm hướng dẫn
-      %ul.nav.nav-pills.pull-right.al-wait-current-user{:style => "display: block;"}
-        %li.al-hidden-current-user{:style => "display: list-item;"}
-          %a{"data-no-turbolink" => "true", :href => "/login"} Đăng nhập
-        %li.header-separator.hidden-xs.hidden-sm.al-hidden-current-user{:style => "display: list-item;"} or
-        %li.header-registration.al-hidden-current-user{:style => "display: list-item;"}
-          %a{"data-no-turbolink" => "true", :href => "/signup"} Đăng ký miễn phí
+            Phản hồi dịch vụ
+        %li.visible-xs
+          %a{"data-no-turbolink" => "true", :href => "changelogs"} Đăng ký khám
         

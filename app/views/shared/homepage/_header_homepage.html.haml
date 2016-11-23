@@ -1,16 +1,40 @@
 .hero
   .container
-    %h1.text-center
-      Xây dựng một hệ thống quản lý riêng biệt
-      %small Lưu trữ các thông tin cần thiết trên hê thống đám mây dữ liệu. Cung cấp các kết quả thống kê cần thiết cùng các gợi ý để nâng cao chất lượng dịch vụ khám chữa bệnh chỉ với những thao tác đơn giản 
-    .text-center
-      %span
-        %a.btn.btn-static-inverse{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Đặt lịch Demo sản phẩm
-      %span.hidden-xs
-        %a.btn.btn-static-primary.m-l{"data-no-turbolink" => "true", :href => "/signup"}
-          Dùng thử miễn phí 14 ngày
-          %i.fa.fa-caret-right
-          %span.no-card Chỉ tốn 5 phút
-    .spacer30.clearfix
-    %h4.text-center.hidden-xs Những trung tâm ý tế tốt nhất đều sẽ chọn Aligosa
-    .spacer10
+    .col-sm-6
+      %h1.text-center
+        MEDICA THE BEST HOSPITAL WEBSITE
+        %small.hidden-xs LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA 
+      .text-center
+        %span
+          %a.btn.btn-static-inverse{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Đăng ký khám bệnh
+        %span.hidden-xs
+          %a.btn.btn-static-primary.m-l{"data-no-turbolink" => "true", :href => "/signup"}
+            Bảng giá dịch vụ
+            %i.fa.fa-caret-right
+      .spacer80.clearfix
+    .col-sm-6.hidden-xs
+      .class-a{:style => "margin-left:auto;margin-right:auto;padding-top:150px"}
+        .schedule-block{:style => "width: 260px; margin-right: 30px;"}
+          .doctor-image
+            %img.retina-img{:alt => "Dr. Mark Lowson", :src => asset_path("doctor1.jpg")}/
+          .doctor-name
+            %h4 Dr. Mark Lowson
+          .timetable
+            .item
+              .label Monday-Friday
+              .value 8:00 - 17:00
+            .item
+              .label Saturday
+              .value 10:00 - 16:00
+            .item
+              .label Sunday
+              .value 12:00 - 14:00
+          %span.button-style2
+            %i.fa.fa-arrow-left{"aria-hidden" => "true"}
+          %a.button-style2{:href => "doctor-personal-page.html"}
+            %span read profile
+          %span.button-style2
+            %i.fa.fa-arrow-right{"aria-hidden" => "true"}
+
+
+    
