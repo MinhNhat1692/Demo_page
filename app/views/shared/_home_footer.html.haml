@@ -1,0 +1,83 @@
+%footer#footer
+  .container
+    .row
+      .footer-dev-container.col-xs-6.col-sm-3.col-md-2.col-md-offset-2
+        %h4 Developer
+        %ul.list-unstyled
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/doc/getting-started"} Getting Started
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/doc"} Documentation
+          %li
+            %a{:href => "/integrations"} Integrations
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/doc/faq"} FAQ
+          %li
+            %a{"data-no-turbolink" => "true", :href => "#"} API Status
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/changes"} Change Log
+      .footer-company-container.col-xs-6.col-sm-3.col-md-2
+        %h4 Company
+        %ul.list-unstyled
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/about"} About Us
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/customers"} Customers
+          %li
+            %a{"data-no-turbolink" => "true", :href => "#"} Blog
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/press"} Press
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/careers"} Careers
+          %li
+            %a{"data-no-turbolink" => "true", :encode => "javascript", :href => "#"} Contact
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/policies/terms"} Terms of service
+          %li
+            %a{"data-no-turbolink" => "true", :href => "/policies/sla"} Service Level Agreement
+      .footer-contact-container.col-sm-6.col-md-4.hidden-xs
+        %h4 Stay in touch
+        .spacer20
+        %ul.network-links.clearfix
+          %li
+            %a{"data-no-turbolink" => "true", :href => "https://twitter.com/Aligosa", :target => "_blank"}
+              %i.fa.fa-twitter
+          %li
+            %a{"data-no-turbolink" => "true", :href => "https://plus.google.com/+Aligosa", :target => "_blank"}
+              %i.fa.fa-google-plus
+          %li
+            %a{"data-no-turbolink" => "true", :href => "https://www.facebook.com/Aligosa", :target => "_blank"}
+              %i.fa.fa-facebook
+          %li
+            %a{"data-no-turbolink" => "true", :href => "https://www.linkedin.com/company/Aligosa", :target => "_blank"}
+              %i.fa.fa-linkedin
+          %li
+            %a{"data-no-turbolink" => "true", :href => "https://github.com/Aligosa", :target => "_blank"}
+              %i.fa.fa-github
+        .spacer30
+        %h4 Newsletter
+        .spacer10
+        #mc_embed_signup.newsletter-signup
+          %form#mc-embedded-subscribe-form.validate.form-inline
+            #mc_embed_signup_scroll
+              .mc-field-group
+                %input#mce-EMAIL.email.form-control{:name => "EMAIL", :placeholder => "Your Email Address", :type => "email"}/
+                %button#mc-embedded-subscribe.btn.btn-default{:type => "submit"}
+                  %i.icon-envelope-o
+                  Subscribe
+                #mce-responses.small
+                  .spacer10
+                  #mce-error-response.response{:style => "display:none"}
+                  #mce-success-response.response{:style => "display:none"}
+                %div{:style => "position: absolute; left: -5000px;"}
+                  %input{:name => "b_f7b8acc6ec97794a08484ca9b_285b80e148", :tabindex => "-1"}/
+              .spacer30
+    .text-center.clearfix
+      .spacer20
+      %a{"data-no-turbolink" => "true", :href => "/"}
+        %img{:src => asset_path('aligosa.jpg'), :width => "70"}/
+      .spacer10
+      %small.copyright
+        © Aligosa -
+        %a{"data-no-turbolink" => "true", :href => "/policies/privacy"} Privacy Policy
+    .spacer20

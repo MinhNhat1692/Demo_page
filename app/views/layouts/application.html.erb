@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample Page</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', params[:controller], media: 'all', 'data-turbolinks-track': true %>
+    <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track': true %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= render 'shared/shim' %>
+  </head>
+  <%= yield %>
+  <%= render 'shared/flash' %>
+</html>
