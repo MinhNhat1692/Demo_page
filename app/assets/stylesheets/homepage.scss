@@ -2529,3 +2529,12 @@ input[type="radio"], input[type="checkbox"] {
     width: 1.28571em;
     text-align: center;
 }
+
+#steplist > .list-item{
+    border-radius: 0px;
+}
+
+#steplist > .active{
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 13px 0px;
+}
