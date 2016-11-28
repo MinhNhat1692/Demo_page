@@ -2,46 +2,4 @@
   .container.text-center
     %h2.text-center.underlined WELCOME TO OUR HEALTH, CARE & MEDICAL CENTER
     %p.section-heading Claritas est etiam processus dynamicus, qui sequ itur mutationem consuetudium lectorum.
-    .row
-      .col-sm-3
-        %div.tab-head-block
-          .tab-head.active
-            %i.animated.bounceInLeft.fa.fa-long-arrow-right
-            Dental
-          .tab-head
-            Dental
-          .tab-head
-            Dental
-          .tab-head
-            Dental
-          .tab-head
-            Dental
-          .tab-head
-            Dental
-          .tab-head
-            Dental
-      .col-sm-9
-        %div.tab-content-block
-          .tab-content.animated.fadeIn
-            %h4 Dental
-            %p We are a team of young professionals passionate in our work. We work in a friendly and efficient using the latest technologies and sharing our expertise to make a diagnosis and implement cutting-edge therapies.
-            / Small Facts
-            %br
-            %ul.fact.row
-              %li.col-sm-6
-                %p
-                  Qualified Staff of Doctors
-              %li.col-sm-6
-                %p
-                  Feel like you are at Home Services
-              %li.col-sm-6
-                %p
-                  24x7 Emergency Services
-              %li.col-sm-6
-                %p
-                  Save your Money and Time with us
-              %li.col-sm-6
-                %p
-                  Medicine Research
-            %a.btn.btn-tab-content.pull-left{:href => "#."} LEARN MORE
-            %span.pricing Từ 120.000 VND
+    = react_component 'servicesMenu', { services: [{id: 2, sname: "Khám 1", price: "120000", description: "Hello madafaka"},{id: 5, sname: "Khám 2", price: "120002", description: "Hello madafaka2"},{id: 6, sname: "Khám 3", price: "120003", description: "Hello madafaka3"}]}
