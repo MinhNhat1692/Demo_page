@@ -2538,3 +2538,53 @@ input[type="radio"], input[type="checkbox"] {
     transform: scale(1.05);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 13px 0px;
 }
+
+.cart-products {
+    width: 100%;
+}
+table {
+    max-width: 100%;
+    background-color: transparent;
+}
+
+.cart-products>thead th:first-child {
+    border-left: 1px solid silver;
+}
+.cart-products>thead th {
+    background-color: #666;
+    color: #fff;
+    text-align: left;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 0;
+    font-size: 15px;
+}
+.cart-products td, .cart-products th {
+    padding: 20px;
+}
+
+.cart-products td{
+    border: 1px solid silver;
+}
+
+.check-out-block{
+    padding: 20px;
+    border-bottom: 1px solid silver;
+}
+
+.check-out-header{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 10px 0 10px 0;
+}
+
+.check-out-normal{
+    padding: 10px 0 10px 0;
+}
+
+.check-out-price{
+    color: #7DB53E;
+    font-size: 1.5em;
+    font-weight: 700;
+}
