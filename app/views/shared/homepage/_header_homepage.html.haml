@@ -1,14 +1,15 @@
 .hero
-  .container
+  .container{:style => "margin-top: 60px;"}
     .col-sm-6
-      %h1.text-center
+      %h1.text-center.hidden-xs
         MEDICA THE BEST HOSPITAL WEBSITE
         %small.hidden-xs LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA 
       .text-center
+        .spacer40
         %span
-          %a.btn.btn-static-inverse{"data-no-turbolink" => "true", :href => "/enterprise/demo"} Đăng ký khám bệnh
+          %a.btn.btn-static-inverse{"data-no-turbolink" => "true", :href => "/reg"} Đăng ký khám bệnh
         %span.hidden-xs
-          %a.btn.btn-static-primary.m-l{"data-no-turbolink" => "true", :href => "/signup"}
+          %a.btn.btn-static-primary.m-l{"data-no-turbolink" => "true", :href => "/services"}
             Bảng giá dịch vụ
             %i.fa.fa-caret-right
       .spacer80.clearfix
