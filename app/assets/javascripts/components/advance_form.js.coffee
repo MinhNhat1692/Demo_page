@@ -609,3 +609,11 @@
                         React.DOM.h4 null, "Mời bạn chọn dịch vụ để xem chi tiết"
     render: ->
         @normalRender()
+        
+        
+@resultMenu = React.createClass
+    getInitialState: ->
+        result: null
+    normalRender: ->
+    render: ->
+        @normalRender()
