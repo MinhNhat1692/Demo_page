@@ -41,6 +41,9 @@ class HomepageController < ApplicationController
   end
 
   def result
+  end
+
+  def post_result
     conn = Faraday.new(url: Settings.server) do |faraday|
       faraday.request :url_encoded
       faraday.response :logger
