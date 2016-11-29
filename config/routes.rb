@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post '/request', to: 'handle_request#regRequest'
+  post '/request', to: 'homepage#post_reg'
   
   root "homepage#home"
   
@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get '/reg', to: 'homepage#reg'
 
   get '/result', to: 'homepage#result'
+
+  resources :apikeys, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
