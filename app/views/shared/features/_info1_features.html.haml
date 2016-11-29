@@ -2,4 +2,4 @@
   .container.text-center
     %h2.text-center.underlined WELCOME TO OUR HEALTH, CARE & MEDICAL CENTER
     %p.section-heading Claritas est etiam processus dynamicus, qui sequ itur mutationem consuetudium lectorum.
-    = react_component 'servicesMenu', { services: [{id: 2, sname: "Khám 1", price: "120000", description: "Hello madafaka"},{id: 5, sname: "Khám 2", price: "120002", description: "Hello madafaka2"},{id: 6, sname: "Khám 3", price: "120003", description: "Hello madafaka3"}]}
+    = react_component 'servicesMenu', { services: @services }

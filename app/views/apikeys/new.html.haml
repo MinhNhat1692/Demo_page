@@ -1,0 +1,16 @@
+%body
+  = render 'shared/homepage/navbar_home'
+  .spacer40
+  .spacer40
+  #product
+    = form_for :apikey, url: apikeys_path, method: :post do |f|
+      %label App Id
+      = f.text_field :appid, class: "form-control"
+      %label Search Only Api
+      = f.text_field :soapi, class: "form-control"
+      %label Monitor Api
+      = f.text_field :mapi, class: "form-control"
+      %label Admin Api
+      = f.text_field :adminapi, class: "form-control"
+      = f.submit "Submit", class: "btn btn-primary"
+  = render 'shared/home_footer'
