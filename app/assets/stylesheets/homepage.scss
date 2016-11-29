@@ -2631,7 +2631,7 @@ table {
 }
 
 .btn-icon-text:hover{
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 2px rgba(0,0,0,0.24),0 0 2px rgba(0,0,0,0.12);
     background-color: #00BCD4;
     color: #fff;
 }
@@ -2644,6 +2644,36 @@ table {
 }
 
 .resultButtonBlock .active{
-    background-color: #8BC34A;
-    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.6), 0 0 1px transparent;
+    background-color: #607D8B;
+    color: #FFF;
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+}
+
+.resultPanelBlock{
+    transition: all .3s;
+    padding: 20px 30px;
+}
+
+.resultPanelBlock:hover{
+    transition: all .5s;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.24),0 0 4px rgba(0,0,0,0.12);
+}
+
+.resultPanelBlock .info{
+    float: left;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.resultPanelBlock .textinfo{
+    border-left: 3px solid #000;
+    padding-left: 20px;
+    min-height: 80px;
+}
+
+.resultPanelBlock img{
+    width: 100%;
+    border: 2px solid #3dc5df;
+    overflow: hidden;
+    border-radius: 5px;
 }

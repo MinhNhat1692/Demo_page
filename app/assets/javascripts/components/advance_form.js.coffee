@@ -648,5 +648,59 @@
                 React.DOM.button className: "btn btn-icon-text",
                     React.DOM.i className: "fa fa-hospital-o"
                     " Thuốc do phòng khám cung cấp"
+            React.DOM.div className: "spacer60"
+            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "Thông tin bệnh nhân"
+                React.DOM.div className: "spacer40"
+                React.DOM.div className: "row",
+                    React.DOM.div className: "col-sm-8",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Họ và tên:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "Hoàng Minh Hùng"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Ngày sinh:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "23/01/1992"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Tuổi:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "25 (5 tháng 3 ngày)"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Giới tính:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "Nam"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Địa chỉ:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "267A Vĩnh Hưng, Hoàng Mai, Hà Nội"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Số ĐT:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "01663212558"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Số CMTND:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "012902810"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Nơi công tác:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", "Số 1 Lương Yên, Hai Bà Trưng, Hà Nội"
+                        React.DOM.p null, "Tiền sử bệnh :"
+                        React.DOM.p className: "textinfo", "Bệnh tim"
+                        React.DOM.p null, "Bệnh di truyền:"
+                        React.DOM.p className: "textinfo", "Không có"
+                        React.DOM.p null, "Dị ứng thuốc :"
+                        React.DOM.p className: "textinfo", "Không có"
+                    React.DOM.div className: "col-sm-4",
+                        React.DOM.img src: "/assets/doctor1.jpg"
     render: ->
         @normalRender()
