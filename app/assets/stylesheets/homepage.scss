@@ -2599,3 +2599,51 @@ table {
     background-color: #3dc5df;
     color: #fff;
 }
+
+.resultRequestBlock{
+    border-radius: 5px;
+    border: 2px solid #46AEDA;
+    padding: 30px;
+    padding-top: 10px;
+}
+
+.btn-special{
+    background: #3dc5df;
+    color: #fff;
+    border: 2px solid #3dc5df;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 5px 30px;
+    margin-top: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-special:hover{
+    color: #3dc5df;
+    background: #fff;
+}
+
+.btn-icon-text:hover{
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+    background-color: #00BCD4;
+    color: #fff;
+}
+
+.btn-icon-text{
+    background-color: #00BCD4;
+    color: #fff;
+    margin: 0 5px 10px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.resultButtonBlock .active{
+    background-color: #8BC34A;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.6), 0 0 1px transparent;
+}

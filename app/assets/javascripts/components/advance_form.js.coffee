@@ -613,7 +613,40 @@
         
 @resultMenu = React.createClass
     getInitialState: ->
-        result: null
+        result: @props.data
     normalRender: ->
+        React.DOM.div className: "container",
+            React.DOM.div className: "resultRequestBlock m400 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "XEM KẾT QUẢ KHÁM"
+                React.DOM.div className: "spacer20"
+                React.DOM.form onSubmit: @handleSubmit, autoComplete: 'off',
+                    React.DOM.div className: 'form-group email optional user_email',
+                        React.DOM.div className: 'input-group',
+                            React.DOM.span className: 'input-group-addon',
+                                React.DOM.i className: 'fa fa-info icon-fw'
+                            React.DOM.input id:'work_place', placeholder: 'Địa chỉ nơi làm việc', type: 'text', className: 'form-control'
+                    React.DOM.div className: 'form-group email optional user_email',
+                        React.DOM.div className: 'input-group',
+                            React.DOM.span className: 'input-group-addon',
+                                React.DOM.i className: 'fa fa-info icon-fw'
+                            React.DOM.input id:'work_place', placeholder: 'Địa chỉ nơi làm việc', type: 'text', className: 'form-control'
+                    React.DOM.button className: 'btn btn-special', type: "submit", "Gửi yêu cầu"
+            React.DOM.div className: "spacer60"
+            React.DOM.div className: "resultButtonBlock text-center",
+                React.DOM.button className: "btn btn-icon-text active",
+                    React.DOM.i className: "fa fa-sticky-note"
+                    " Thông tin bệnh nhân"
+                React.DOM.button className: "btn btn-icon-text",
+                    React.DOM.i className: "fa fa-sticky-note-o"
+                    " Thông tin điều trị"
+                React.DOM.button className: "btn btn-icon-text",
+                    React.DOM.i className: "fa fa-stethoscope"
+                    " Khám lâm sàng"
+                React.DOM.button className: "btn btn-icon-text",
+                    React.DOM.i className: "fa fa-medkit"
+                    " Đơn thuốc"
+                React.DOM.button className: "btn btn-icon-text",
+                    React.DOM.i className: "fa fa-hospital-o"
+                    " Thuốc do phòng khám cung cấp"
     render: ->
         @normalRender()
