@@ -1044,8 +1044,8 @@
     handleSubmit: ->
         @showtoast("Vui lòng chờ trong giây lát",2)
         data =
-            ordermapid:
-            code:
+            om_id: $('#ordermap').val()
+            code: $('code').val()
         $.ajax
             url: '/result'
             type: 'POST'
@@ -1060,7 +1060,7 @@
             ).bind(this)
             success: ((result) ->
                 if result != null
-                    @showtoast('Bệnh án số ' + result.id + ' đã được tải',1)
+                    @showtoast('Bệnh án số ' +  + ' đã được tải',1)
                 else
                     @showtoast("Bạn đã nhập sai mã bệnh án hoặc số khám bệnh, vui lòng nhập lại chính xác",3)
                 return
