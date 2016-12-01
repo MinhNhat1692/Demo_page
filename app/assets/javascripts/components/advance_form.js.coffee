@@ -1044,13 +1044,13 @@
     handleSubmit: (e)->
         e.preventDefault()
         @showtoast("Vui lòng chờ trong giây lát",2)
-        data =
-            om_id: $('#ordermap').val()
-            code: $('#code').val()
+        formData = new FormData
+        formData.append 'om_id', $('#ordermap').val()
+        formData.append 'code', $('#code').val()
         $.ajax
             url: '/result'
             type: 'POST'
-            data: data
+            data: formData
             async: false
             cache: false
             contentType: false
