@@ -53,9 +53,9 @@ class HomepageController < ApplicationController
     if res.status == 200
       result = JSON.parse res.body
       if result["message"] == "Success"
-        @result = result["result"]
+        render json: result["result"]
       else
-        @result = result
+        render json: result
       end
     end
   end
