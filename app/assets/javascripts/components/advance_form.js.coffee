@@ -1041,7 +1041,8 @@
         else if toasttype == 3
             toastr.error(message)
         return
-    handleSubmit: ->
+    handleSubmit: (e)->
+        e.preventDefault()
         @showtoast("Vui lòng chờ trong giây lát",2)
         data =
             om_id: $('#ordermap').val()
