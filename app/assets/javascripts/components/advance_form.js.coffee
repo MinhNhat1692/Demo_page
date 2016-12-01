@@ -1062,6 +1062,7 @@
             success: ((result) ->
                 if result != null
                     @showtoast('Bệnh án số ' + $('#ordermap').val() + ' đã được tải',1)
+                    @setState result: result
                 else
                     @showtoast("Bạn đã nhập sai mã bệnh án hoặc số khám bệnh, vui lòng nhập lại chính xác",3)
                 return
