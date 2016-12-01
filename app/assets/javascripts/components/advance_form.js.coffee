@@ -678,7 +678,7 @@
             days: dateAge
         return age
     customerRecordRender: ->
-        if @props.data[0].id != undefined and @props.data[0] != null
+        if @props.data[0] != null
             React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
                 React.DOM.h3 className: "text-center", "Thông tin bệnh nhân"
                 React.DOM.div className: "spacer40"
@@ -750,7 +750,7 @@
             React.DOM.div className: "row",
                 React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
     checkInfoRender: ->
-        if @props.data[1].id != undefined and @props.data[1] != null
+        if @props.data[1] != null
             React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
                 React.DOM.h3 className: "text-center", "Thông tin điều trị"
                 React.DOM.div className: "spacer40"
@@ -806,7 +806,7 @@
             React.DOM.div className: "row",
                 React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
     doctorCheckInfoRender: ->
-        if @props.data[2].id != undefined and @props.data[2] != null
+        if @props.data[2] != null
             React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
                 React.DOM.h3 className: "text-center", "Khám lâm sàng"
                 React.DOM.div className: "spacer40"
@@ -869,7 +869,7 @@
             React.DOM.div className: "row",
                 React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
     prescriptExternalRender: ->
-        if @props.data[3].id != undefined and @props.data[3] != null
+        if @props.data[3] != null
             React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
                 React.DOM.h3 className: "text-center", "Đơn thuốc"
                 React.DOM.div className: "spacer40"
@@ -936,7 +936,7 @@
             React.DOM.div className: "row",
                 React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
     prescriptInternalRender: ->
-        if @props.data[4].id != undefined and @props.data[3] != null
+        if @props.data[4] != null
             React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
                 React.DOM.h3 className: "text-center", "Đơn thuốc"
                 React.DOM.div className: "spacer40"
@@ -1012,21 +1012,25 @@
             React.DOM.div className: "row",
                 React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
     render: ->
-        switch @props.phase
-            when 1
-                @customerRecordRender()
-            when 2
-                @checkInfoRender()
-            when 3
-                @doctorCheckInfoRender()
-            when 4
-                @prescriptExternalRender()
-            when 5
-                @prescriptInternalRender()
+        if @props.data != null
+            switch @props.phase
+                when 1
+                    @customerRecordRender()
+                when 2
+                    @checkInfoRender()
+                when 3
+                    @doctorCheckInfoRender()
+                when 4
+                    @prescriptExternalRender()
+                when 5
+                    @prescriptInternalRender()
+        else
+            React.DOM.div className: "row",
+                React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
 
 @resultMenu = React.createClass
     getInitialState: ->
-        result: @props.data
+        result: null
         phase: 1
     changephase: (code) ->
         @setState phase: code
@@ -1066,7 +1070,6 @@
             success: ((result) ->
                 if result != null
                     @showtoast('Bệnh án số ' + $('#ordermap').val() + ' đã được tải',1)
-                    console.log result
                     @setState result: result
                 else
                     @showtoast("Bạn đã nhập sai mã bệnh án hoặc số khám bệnh, vui lòng nhập lại chính xác",3)
