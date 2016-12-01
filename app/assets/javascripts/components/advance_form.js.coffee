@@ -1045,7 +1045,7 @@
         @showtoast("Vui lòng chờ trong giây lát",2)
         data =
             om_id: $('#ordermap').val()
-            code: $('code').val()
+            code: $('#code').val()
         $.ajax
             url: '/result'
             type: 'POST'
