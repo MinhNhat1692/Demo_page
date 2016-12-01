@@ -610,10 +610,461 @@
     render: ->
         @normalRender()
         
-        
+
+@resultButtonList = React.createClass
+    getInitialState: ->
+        local: 1
+    trigger: (code) ->
+        @props.trigger code
+    normalRender: ->
+        React.DOM.div className: "resultButtonBlock text-center",
+            for list in @props.button
+                React.createElement resultButtonListChild, key: list.code, data: list, phase: @props.phase, trigger: @trigger
+    render: ->
+        @normalRender()
+
+
+@resultButtonListChild = React.createClass
+    getInitialState: ->
+        local: 1
+    trigger: ->
+        @props.trigger @props.data.code
+    normalRender: ->
+        if @props.data.code == @props.phase
+            React.DOM.button className: "btn btn-icon-text active", onClick: @trigger,
+                React.DOM.i className: @props.data.icon
+                " " + @props.data.text
+        else
+            React.DOM.button className: "btn btn-icon-text", onClick: @trigger,
+                React.DOM.i className: @props.data.icon
+                " " + @props.data.text
+    render: ->
+        @normalRender()
+
+
+@resultContent = React.createClass
+    getInitialState: ->
+        local: 1
+    calAge: (dob, style) ->
+        now = new Date
+        today = new Date(now.getYear(), now.getMonth(), now.getDate())
+        yearNow = now.getYear()
+        monthNow = now.getMonth()
+        dateNow = now.getDate()
+        if style == 1
+            dob = new Date(dob.substring(6, 10), dob.substring(3, 5) - 1, dob.substring(0, 2))
+        else
+            dob = new Date(dob.substring(0, 4), dob.substring(5, 7) - 1, dob.substring(8, 10))
+        yearDob = dob.getYear()
+        monthDob = dob.getMonth()
+        dateDob = dob.getDate()
+        yearAge = yearNow - yearDob
+        if monthNow >= monthDob
+            monthAge = monthNow - monthDob
+        else
+            yearAge--
+            monthAge = 12 + monthNow - monthDob
+        if dateNow >= dateDob
+            dateAge = dateNow - dateDob
+        else
+            monthAge--
+            dateAge = 31 + dateNow - dateDob
+        if monthAge < 0
+            monthAge = 11
+            yearAge--
+        age =
+            years: yearAge
+            months: monthAge
+            days: dateAge
+        return age
+    customerRecordRender: ->
+        if @props.data[0].id != undefined
+            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "Thông tin bệnh nhân"
+                React.DOM.div className: "spacer40"
+                React.DOM.div className: "row",
+                    React.DOM.div className: "col-sm-8",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Họ và tên:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[0].cname
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Ngày sinh:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info",
+                                    if @props.data[0].dob != null and @props.data[0].dob != undefined
+                                        @props.data[0].dob.substring(8, 10) + "/" + @props.data[0].dob.substring(5, 7) + "/" + @props.data[0].dob.substring(0, 4)
+                                    else
+                                        ""
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Tuổi:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @calAge(@props.data[0].dob,2).years + " Tuổi " + @calAge(@props.data[0].dob,2).months + " Tháng"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Giới tính:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info",
+                                    if @props.data[0].gender == 1
+                                        "Name"
+                                    else if @props.data[0].gender == 2
+                                        "Nữ"
+                                    else
+                                        "Chưa cập nhật"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Địa chỉ:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[0].address
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Số ĐT:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[0].pnumber
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Số CMTND:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[0].noid
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Nơi công tác:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[0].work_place
+                        React.DOM.p null, "Tiền sử bệnh :"
+                        React.DOM.p className: "textinfo", @props.data[0].self_history
+                        React.DOM.p null, "Bệnh di truyền:"
+                        React.DOM.p className: "textinfo", @props.data[0].family_history
+                        React.DOM.p null, "Dị ứng thuốc :"
+                        React.DOM.p className: "textinfo", @props.data[0].drug_history
+                    React.DOM.div className: "col-sm-4",
+                        React.DOM.img src: @props.data[0].avatar
+        else
+            React.DOM.div className: "row",
+                React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
+    checkInfoRender: ->
+        if @props.data[1].id != undefined
+            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "Thông tin điều trị"
+                React.DOM.div className: "spacer40"
+                React.DOM.div className: "row",
+                    React.DOM.div className: "col-sm-12",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Bác sỹ:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[1].ename
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Bệnh nhân:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info", @props.data[1].c_name
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Ngày bắt đầu:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info",
+                                    if @props.data[1].daystart != null && @props.data[1].daystart != undefined
+                                        @props.data[1].daystart.substring(8, 10) + "/" + @props.data[1].daystart.substring(5, 7) + "/" + @props.data[1].daystart.substring(0, 4)
+                                    else
+                                        ""
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Ngày kết thúc:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info",
+                                    if @props.data[1].dayend != null && @props.data[1].dayend != undefined
+                                        @props.data[1].dayend.substring(8, 10) + "/" + @props.data[1].dayend.substring(5, 7) + "/" + @props.data[1].dayend.substring(0, 4)
+                                    else
+                                        ""
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-3 hidden-xs",
+                                React.DOM.p null, "Tình trạng:"
+                            React.DOM.div className: "col-sm-9",
+                                React.DOM.p className: "info",
+                                    switch Number(@props.data[1].status)
+                                        when 1
+                                            "Chưa khám"
+                                        when 2
+                                            "Đang khám"
+                                        when 3
+                                            "Kết thúc khám"
+                        React.DOM.p null, "Kết luận :"
+                        React.DOM.p className: "textinfo", @props.data[1].kluan
+                        React.DOM.p null, "Chuẩn đoán:"
+                        React.DOM.p className: "textinfo", @props.data[1].cdoan
+                        React.DOM.p null, "Hướng điều trị :"
+                        React.DOM.p className: "textinfo", @props.data[1].hdieutri
+        else
+            React.DOM.div className: "row",
+                React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
+    doctorCheckInfoRender: ->
+        if @props.data[2].id != undefined
+            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "Khám lâm sàng"
+                React.DOM.div className: "spacer40"
+                React.DOM.div className: "row",
+                    React.DOM.div className: "col-sm-8",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-4 hidden-xs",
+                                React.DOM.p null, "Bác sỹ:"
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p className: "info", @props.data[2].ename
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-4 hidden-xs",
+                                React.DOM.p null, "Bệnh nhân:"
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p className: "info", @props.data[2].c_name
+                        React.DOM.p null, "Quá trình bệnh lý:"
+                        React.DOM.p className: "textinfo", @props.data[2].qtbenhly
+                        React.DOM.p null, "Khám lâm sàng:"
+                        React.DOM.p className: "textinfo", @props.data[2].klamsang
+                        React.DOM.p null, "Chuẩn đoán ban đầu:"
+                        React.DOM.p className: "textinfo", @props.data[2].cdbandau
+                        React.DOM.p null, "Bệnh kèm theo:"
+                        React.DOM.p className: "textinfo", @props.data[2].bktheo
+                        React.DOM.p null, "Chuẩn đoán ICD:"
+                        React.DOM.p className: "textinfo", @props.data[2].cdicd
+                        React.DOM.p null, "Kết luận:"
+                        React.DOM.p className: "textinfo", @props.data[2].kluan
+                    React.DOM.div className: "col-sm-4",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p null, "Nhịp tim:"
+                            React.DOM.div className: "col-sm-4",
+                                React.DOM.p className: "info", @props.data[2].nhiptim
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p null, "Nhiệt độ:"
+                            React.DOM.div className: "col-sm-4",
+                                React.DOM.p className: "info", @props.data[2].nhietdo
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p null, "Huyết áp:"
+                            React.DOM.div className: "col-sm-4",
+                                React.DOM.p className: "info", @props.data[2].hamin + " - " + @props.data[2].hamax
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p null, "Nhịp thở:"
+                            React.DOM.div className: "col-sm-4",
+                                React.DOM.p className: "info", @props.data[2].ntho
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p null, "Cân nặng:"
+                            React.DOM.div className: "col-sm-4",
+                                React.DOM.p className: "info", @props.data[2].cnang
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p null, "Chiều cao:"
+                            React.DOM.div className: "col-sm-4",
+                                React.DOM.p className: "info", @props.data[2].cao
+        else
+            React.DOM.div className: "row",
+                React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
+    prescriptExternalRender: ->
+        if @props.data[3].id != undefined
+            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "Đơn thuốc"
+                React.DOM.div className: "spacer40"
+                React.DOM.div className: "row",
+                    React.DOM.div className: "col-sm-6",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-4 hidden-xs",
+                                React.DOM.p null, "Bác sỹ kê:"
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p className: "info", @props.data[3].ename
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-4 hidden-xs",
+                                React.DOM.p null, "Bệnh nhân:"
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p className: "info", @props.data[3].cname
+                        React.DOM.p null, "Ghi chú:"
+                        React.DOM.p className: "textinfo", @props.data[3].remark
+                    React.DOM.div className: "col-sm-6",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Người chuẩn bị thuốc:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", "Không có thông tin"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Người thanh toán:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", "Không có thông tin"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Tổng giá:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", "Không có thông tin"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Giảm giá:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", "Không có thông tin"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Tổng thanh toán:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", "Không có thông tin"
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Cách thanh toán:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", "Không có thông tin"
+                    React.DOM.div className: "col-sm-12",
+                        React.DOM.div className: "spacer40"
+                        React.DOM.table className: 'cart-products',
+                            React.DOM.thead null,
+                                React.DOM.tr null,
+                                    React.DOM.th null, 'Tên thuốc'
+                                    React.DOM.th null, 'Số lượng'
+                                    React.DOM.th null, 'Ghi chú'
+                            React.DOM.tbody null,
+                                for record in @props.data[3].record
+                                    React.DOM.tr className: 'product-cart-list', key: record.id,
+                                        React.DOM.td null, record.name 
+                                        React.DOM.td null, record.amount
+                                        React.DOM.td null, record.remark
+        else
+            React.DOM.div className: "row",
+                React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
+    prescriptInternalRender: ->
+        if @props.data[4].id != undefined
+            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
+                React.DOM.h3 className: "text-center", "Đơn thuốc"
+                React.DOM.div className: "spacer40"
+                React.DOM.div className: "row",
+                    React.DOM.div className: "col-sm-6",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-4 hidden-xs",
+                                React.DOM.p null, "Bác sỹ kê:"
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p className: "info", @props.data[4].ename
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-4 hidden-xs",
+                                React.DOM.p null, "Bệnh nhân:"
+                            React.DOM.div className: "col-sm-8",
+                                React.DOM.p className: "info", @props.data[4].cname
+                        React.DOM.p null, "Ghi chú:"
+                        React.DOM.p className: "textinfo", @props.data[4].remark
+                    React.DOM.div className: "col-sm-6",
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Người chuẩn bị thuốc:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", @props.data[4].preparer
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Người thanh toán:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", @props.data[4].payer
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Tổng giá:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", @props.data[4].tpayment
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Giảm giá:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", @props.data[4].discount
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Tổng thanh toán:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info", @props.data[4].tpayout
+                        React.DOM.div className: "row",
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p null, "Cách thanh toán:"
+                            React.DOM.div className: "col-sm-6",
+                                React.DOM.p className: "info",
+                                    switch Number(@props.data[4].pmethod)
+                                        when 1
+                                            "Tiền mặt"
+                                        when 2
+                                            "Chuyển khoản"
+                                        when 3
+                                            "Khác"
+                    React.DOM.div className: "col-sm-12",
+                        React.DOM.div className: "spacer40"
+                        React.DOM.table className: 'cart-products',
+                            React.DOM.thead null,
+                                React.DOM.tr null,
+                                    React.DOM.th null, 'Tên thuốc'
+                                    React.DOM.th null, 'Số lượng'
+                                    React.DOM.th null, 'Ghi chú'
+                                    React.DOM.th null, "Giá thanh toán"
+                            React.DOM.tbody null,
+                                for record in @props.data[4].record
+                                    React.DOM.tr className: 'product-cart-list', key: record.id,
+                                        React.DOM.td null, record.name 
+                                        React.DOM.td null, record.amount
+                                        React.DOM.td null, record.remark
+                                        React.DOM.td null, record.tpayment
+        else
+            React.DOM.div className: "row",
+                React.DOM.p className: "text-center", "Không có dữ liệu về mục này"
+    render: ->
+        switch @props.phase
+            when 1
+                @customerRecordRender()
+            when 2
+                @checkInfoRender()
+            when 3
+                @doctorCheckInfoRender()
+            when 4
+                @prescriptExternalRender()
+            when 5
+                @prescriptInternalRender()
+
 @resultMenu = React.createClass
     getInitialState: ->
         result: @props.data
+        phase: 1
+    changephase: (code) ->
+        @setState phase: code
+    showtoast: (message,toasttype) ->
+	    toastr.options =
+            closeButton: true
+            progressBar: true
+            positionClass: 'toast-top-right'
+            showMethod: 'slideDown'
+            hideMethod: 'fadeOut'
+            timeOut: 4000
+        if toasttype == 1
+            toastr.success message
+        else if toasttype == 2
+            toastr.info(message)
+        else if toasttype == 3
+            toastr.error(message)
+        return
+    handleSubmit: ->
+        @showtoast("Vui lòng chờ trong giây lát",2)
+        data =
+            ordermapid:
+            code:
+        $.ajax
+            url: '/result'
+            type: 'POST'
+            data: data
+            async: false
+            cache: false
+            contentType: false
+            processData: false
+            error: ((result) ->
+                @showtoast("Tải kết quả thất bại, vui lòng thử lại",3)
+                return
+            ).bind(this)
+            success: ((result) ->
+                if result != null
+                    @showtoast('Bệnh án số ' + result.id + ' đã được tải',1)
+                else
+                    @showtoast("Bạn đã nhập sai mã bệnh án hoặc số khám bệnh, vui lòng nhập lại chính xác",3)
+                return
+            ).bind(this)
     normalRender: ->
         React.DOM.div className: "container",
             React.DOM.div className: "resultRequestBlock m400 m-l-r-auto",
@@ -624,164 +1075,24 @@
                         React.DOM.div className: 'input-group',
                             React.DOM.span className: 'input-group-addon',
                                 React.DOM.i className: 'fa fa-info icon-fw'
-                            React.DOM.input id:'work_place', placeholder: 'Địa chỉ nơi làm việc', type: 'text', className: 'form-control'
+                            React.DOM.input id:'ordermap', placeholder: 'Số khám bệnh', type: 'number', className: 'form-control'
                     React.DOM.div className: 'form-group email optional user_email',
                         React.DOM.div className: 'input-group',
                             React.DOM.span className: 'input-group-addon',
                                 React.DOM.i className: 'fa fa-info icon-fw'
-                            React.DOM.input id:'work_place', placeholder: 'Địa chỉ nơi làm việc', type: 'text', className: 'form-control'
+                            React.DOM.input id:'code', placeholder: 'Mã truy cập bệnh án', type: 'text', className: 'form-control'
                     React.DOM.button className: 'btn btn-special', type: "submit", "Gửi yêu cầu"
             React.DOM.div className: "spacer60"
-            React.DOM.div className: "resultButtonBlock text-center",
-                React.DOM.button className: "btn btn-icon-text active",
-                    React.DOM.i className: "fa fa-sticky-note"
-                    " Thông tin bệnh nhân"
-                React.DOM.button className: "btn btn-icon-text",
-                    React.DOM.i className: "fa fa-sticky-note-o"
-                    " Thông tin điều trị"
-                React.DOM.button className: "btn btn-icon-text",
-                    React.DOM.i className: "fa fa-stethoscope"
-                    " Khám lâm sàng"
-                React.DOM.button className: "btn btn-icon-text",
-                    React.DOM.i className: "fa fa-medkit"
-                    " Đơn thuốc"
-                React.DOM.button className: "btn btn-icon-text",
-                    React.DOM.i className: "fa fa-hospital-o"
-                    " Thuốc do phòng khám cung cấp"
+            React.createElement resultButtonList, phase: @state.phase, trigger: @changephase, button: [
+                {code: 1, icon: "fa fa-sticky-note", text: "Thông tin bệnh nhân"}
+                {code: 2, icon: "fa fa-sticky-note-o", text: "Thông tin điều trị"}
+                {code: 3, icon: "fa fa-stethoscope", text: "Khám lâm sàng"}
+                {code: 4, icon: "fa fa-medkit", text: "Thuốc ngoài phòng khám"}
+                {code: 5, icon: "fa fa-hospital-o", text: "Thuốc do phòng khám cung cấp"}
+            ]
             React.DOM.div className: "spacer60"
-            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
-                React.DOM.h3 className: "text-center", "Thông tin bệnh nhân"
-                React.DOM.div className: "spacer40"
-                React.DOM.div className: "row",
-                    React.DOM.div className: "col-sm-8",
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Họ và tên:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "Hoàng Minh Hùng"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Ngày sinh:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "23/01/1992"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Tuổi:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "25 (5 tháng 3 ngày)"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Giới tính:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "Nam"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Địa chỉ:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "267A Vĩnh Hưng, Hoàng Mai, Hà Nội"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Số ĐT:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "01663212558"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Số CMTND:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "012902810"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Nơi công tác:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "Số 1 Lương Yên, Hai Bà Trưng, Hà Nội"
-                        React.DOM.p null, "Tiền sử bệnh :"
-                        React.DOM.p className: "textinfo", "Bệnh tim"
-                        React.DOM.p null, "Bệnh di truyền:"
-                        React.DOM.p className: "textinfo", "Không có"
-                        React.DOM.p null, "Dị ứng thuốc :"
-                        React.DOM.p className: "textinfo", "Không có"
-                    React.DOM.div className: "col-sm-4",
-                        React.DOM.img src: "/assets/doctor1.jpg"
-            React.DOM.div className: "spacer60"
-            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
-                React.DOM.h3 className: "text-center", "Thông tin điều trị"
-                React.DOM.div className: "spacer40"
-                React.DOM.div className: "row",
-                    React.DOM.div className: "col-sm-12",
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Bác sỹ:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "Trần Minh Hoàng"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Bệnh nhân:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "Hoàng Minh Hùng"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Ngày bắt đầu:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "2016-10-03"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Ngày kết thúc:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "2016-10-03"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-3 hidden-xs",
-                                React.DOM.p null, "Tình trạng:"
-                            React.DOM.div className: "col-sm-9",
-                                React.DOM.p className: "info", "Kết thúc"
-                        React.DOM.p null, "Kết luận :"
-                        React.DOM.p className: "textinfo", "Bệnh tim"
-                        React.DOM.p null, "Chuẩn đoán:"
-                        React.DOM.p className: "textinfo", "Không có"
-                        React.DOM.p null, "Hướng điều trị :"
-                        React.DOM.p className: "textinfo", "Không có"
-            React.DOM.div className: "spacer60"
-            React.DOM.div className: "resultPanelBlock m900 m-l-r-auto",
-                React.DOM.h3 className: "text-center", "Khám lâm sàng"
-                React.DOM.div className: "spacer40"
-                React.DOM.div className: "row",
-                    React.DOM.div className: "col-sm-8",
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-4 hidden-xs",
-                                React.DOM.p null, "Bác sỹ:"
-                            React.DOM.div className: "col-sm-8",
-                                React.DOM.p className: "info", "Trần Minh Hoàng"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-4 hidden-xs",
-                                React.DOM.p null, "Bệnh nhân:"
-                            React.DOM.div className: "col-sm-8",
-                                React.DOM.p className: "info", "Hoàng Minh Hùng"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-4 hidden-xs",
-                                React.DOM.p null, "Quá trình bệnh lý:"
-                            React.DOM.div className: "col-sm-8",
-                                React.DOM.p className: "info", "Không có vấn đề gì"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-4 hidden-xs",
-                                React.DOM.p null, "Khám lâm sàng:"
-                            React.DOM.div className: "col-sm-8",
-                                React.DOM.p className: "info", "Chỉ là các triệu chứng bình thường của bệnh cảm"
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-4 hidden-xs",
-                                React.DOM.p null, "Tình trạng:"
-                            React.DOM.div className: "col-sm-8",
-                                React.DOM.p className: "info", "Kết thúc"
-                        React.DOM.p null, "Kết luận :"
-                        React.DOM.p className: "textinfo", "Bệnh tim"
-                        React.DOM.p null, "Chuẩn đoán:"
-                        React.DOM.p className: "textinfo", "Không có"
-                        React.DOM.p null, "Hướng điều trị :"
-                        React.DOM.p className: "textinfo", "Không có"
-                React.DOM.div className: "row",
-                    React.DOM.div className: "col-sm-4",
-                        React.DOM.div className: "row",
-                            React.DOM.div className: "col-sm-8",
-                                React.DOM.p null, "Bác sỹ:"
-                            React.DOM.div className: "col-sm-4",
-                                React.DOM.p className: "info", "Trần Minh Hoàng"
+            React.createElement resultContent, phase: @state.phase, data: @state.result
     render: ->
         @normalRender()
+        
+
